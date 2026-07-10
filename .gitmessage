@@ -1,0 +1,15 @@
+# <type>: <subject line (max 50 chars)>
+# <BLANK LINE>
+# <body (wrap at 72 chars)>
+# <BLANK LINE>
+# <footer>
+#
+# Type: feat, fix, docs, style, refactor, perf, test, chore, ci, build
+# 
+# Example:
+# feat: add new dashboard domain for risk management
+#
+# This adds a new intelligence type for risk monitoring
+# with corresponding icons and validation rules.
+#
+# Closes #123

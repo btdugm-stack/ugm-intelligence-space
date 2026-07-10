@@ -1,0 +1,48 @@
+# UGM Intelligence Space - Git Configuration
+# File: .git/config (local project configuration)
+# This is the default configuration template for the project
+
+[core]
+    repositoryformatversion = 0
+    filemode = false
+    bare = false
+    logallrefupdates = true
+    ignorecase = true
+    precomposeunicode = true
+
+[user]
+    name = UGM Development Team
+    email = dev@ugm.ac.id
+
+[remote "origin"]
+    url = https://github.com/btdugm-stack/ugm-intelligence-space.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+
+[branch "main"]
+    remote = origin
+    merge = refs/heads/main
+
+[branch "develop"]
+    remote = origin
+    merge = refs/heads/develop
+
+# Commit message template
+[commit]
+    template = .gitmessage
+
+# Pretty log format
+[log]
+    decorate = short
+    graph = true
+
+# Aliases for common operations
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    unstage = restore --staged
+    last = log -1 HEAD
+    visual = log --graph --oneline --all --decorate
+    amend = commit --amend --no-edit
+    pushf = push --force-with-lease

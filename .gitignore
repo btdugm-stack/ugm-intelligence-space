@@ -1,0 +1,40 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Composer
+vendor/
+composer.lock
+
+# Cache
+cache/
+.cache/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Database backups
+*.sql
+*.backup
+
+# Session files
+sessions/
