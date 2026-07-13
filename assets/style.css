@@ -662,20 +662,20 @@ textarea:focus {
    ========================================================================== */
 
 .footer {
-  background: linear-gradient(135deg, rgba(10, 90, 138, 0.90), rgba(32, 191, 212, 0.80));
-  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text-primary);
   padding: 40px 0;
   font-size: 13px;
   margin-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(212, 229, 240, 0.3);
 }
 
 .footer a {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--primary);
 }
 
 .footer a:hover {
-  color: #fff;
+  color: var(--secondary);
   text-decoration: underline;
 }
 
