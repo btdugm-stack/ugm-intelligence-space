@@ -335,13 +335,13 @@ small {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
+  grid-template-columns: 1fr;
   gap: 28px;
   align-items: stretch;
 }
 
 .hero-card {
-  padding: 40px;
+  padding: 60px 50px;
   background: rgba(255, 255, 255, 0.96);
   border-radius: 28px;
   box-shadow: var(--shadow-md);
@@ -421,76 +421,6 @@ small {
   color: #fff;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
-}
-
-/* ============================================================================
-   PULSE/STATISTICS CARD
-   ========================================================================== */
-
-.pulse-card {
-  padding: 28px;
-  border-radius: 28px;
-  background: linear-gradient(160deg, rgba(10, 90, 138, 0.9), rgba(26, 123, 168, 0.85));
-  color: #fff;
-  box-shadow: var(--shadow-lg);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.pulse-card::before {
-  content: '';
-  position: absolute;
-  inset: auto -60px -80px auto;
-  width: 240px;
-  height: 240px;
-  background: rgba(32, 191, 212, 0.15);
-  border-radius: 50%;
-}
-
-.pulse-card h3 {
-  margin: 0 0 24px;
-  font-size: 20px;
-  color: #fff;
-  position: relative;
-  z-index: 1;
-}
-
-.pulse-list {
-  display: grid;
-  gap: 14px;
-  position: relative;
-  z-index: 1;
-}
-
-.pulse-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.pulse-item:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateX(4px);
-}
-
-.pulse-item span {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.pulse-item strong {
-  font-size: 26px;
-  font-weight: 900;
-  color: #fff;
 }
 
 /* ============================================================================
@@ -808,10 +738,6 @@ textarea:focus {
     min-height: auto;
     padding: 18px;
   }
-
-  .pulse-card {
-    padding: 24px;
-  }
 }
 
 /* ============================================================================
@@ -1078,33 +1004,6 @@ textarea:focus {
     padding: 7px 10px;
     font-size: 11px;
     border-radius: 18px;
-  }
-
-  .pulse-card {
-    padding: 16px;
-    border-radius: 20px;
-  }
-
-  .pulse-card h3 {
-    font-size: 15px;
-    margin: 0 0 12px;
-  }
-
-  .pulse-list {
-    gap: 10px;
-  }
-
-  .pulse-item {
-    padding: 12px;
-    border-radius: 12px;
-  }
-
-  .pulse-item strong {
-    font-size: 20px;
-  }
-
-  .pulse-item span {
-    font-size: 12px;
   }
 
   .section {
