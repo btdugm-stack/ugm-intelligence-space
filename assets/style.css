@@ -72,7 +72,7 @@ body {
   padding: 0;
   font-family: 'Inter', 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-primary);
-  background-image: linear-gradient(135deg, rgba(10, 90, 138, 0.35), rgba(32, 191, 212, 0.25)), url('../upload/background.png');
+  background-image: url('../upload/background.png');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -178,10 +178,9 @@ small {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.92);
   border-bottom: 1px solid rgba(212, 229, 240, 0.5);
-  box-shadow: 0 4px 16px rgba(10, 90, 138, 0.1);
+  box-shadow: 0 4px 12px rgba(10, 90, 138, 0.08);
 }
 
 .nav {
@@ -330,13 +329,12 @@ small {
 
 .hero {
   padding: 54px 0 32px;
-  background: rgba(10, 90, 138, 0.08);
-  backdrop-filter: blur(4px);
+  background: transparent;
   position: relative;
   margin: 0 -999px;
   padding-left: calc(999px + 16px);
   padding-right: calc(999px + 16px);
-  border-bottom: 1px solid rgba(32, 191, 212, 0.2);
+  border-bottom: none;
 }
 
 .hero-grid {
@@ -348,10 +346,9 @@ small {
 
 .hero-card {
   padding: 60px 50px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 28px;
-  box-shadow: 0 30px 60px rgba(10, 90, 138, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 25px 50px rgba(10, 90, 138, 0.15);
   overflow: hidden;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.8);
@@ -437,17 +434,15 @@ small {
 
 .section {
   padding: 40px 0;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.90);
   margin: 0 -999px;
   padding-left: calc(999px + 16px);
   padding-right: calc(999px + 16px);
-  border-bottom: 1px solid rgba(212, 229, 240, 0.4);
+  border-bottom: 1px solid rgba(212, 229, 240, 0.3);
 }
 
 .section:nth-child(even) {
-  background: rgba(248, 251, 253, 0.82);
-  backdrop-filter: blur(12px);
+  background: rgba(248, 251, 253, 0.88);
 }
 
 .section-title {
@@ -514,12 +509,11 @@ textarea:focus {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 229, 240, 0.5);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(212, 229, 240, 0.4);
   border-radius: 24px;
   padding: 22px;
-  box-shadow: 0 8px 24px rgba(10, 90, 138, 0.1);
+  box-shadow: 0 8px 20px rgba(10, 90, 138, 0.08);
   display: flex;
   flex-direction: column;
   min-height: 320px;
@@ -668,13 +662,12 @@ textarea:focus {
    ========================================================================== */
 
 .footer {
-  background: linear-gradient(135deg, rgba(10, 90, 138, 0.88), rgba(32, 191, 212, 0.78));
-  backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, rgba(10, 90, 138, 0.90), rgba(32, 191, 212, 0.80));
   color: rgba(255, 255, 255, 0.95);
   padding: 40px 0;
   font-size: 13px;
   margin-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer a {
