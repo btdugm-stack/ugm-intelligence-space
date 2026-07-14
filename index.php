@@ -42,7 +42,6 @@ $needAttention = count(array_filter($publicDashboards, fn($d) => in_array(($d['s
     </a>
     <div class="nav-actions">
       <a class="btn btn-secondary" href="#catalog">Explore Dashboard</a>
-      <a class="btn btn-primary" href="login.php">Admin Login</a>
     </div>
   </div>
 </header>
