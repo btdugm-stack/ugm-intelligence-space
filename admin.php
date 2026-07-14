@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 
                 save_dashboards($dashboards);
-                $message = $found ? 'Dashboard berhasil diperbarui.' : 'Dashboard baru berhasil ditambahkan.';
+                $message = $found ? 'Dashboard updated successfully.' : 'New dashboard created successfully.';
                 $message_type = 'success';
             }
         } elseif ($action === 'delete') {
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $dashboards = array_values(array_filter($dashboards, fn($d) => ($d['id'] ?? '') !== $id));
                     save_dashboards($dashboards);
                     Logger::log_audit('DELETE', 'Dashboard', $id, ['record' => $found_record]);
-                    $message = 'Dashboard berhasil dihapus.';
+                    $message = 'Dashboard deleted successfully.';
                     $message_type = 'success';
                 } else {
                     $errors[] = 'Dashboard not found.';
@@ -174,10 +174,10 @@ $accesses = $GLOBALS['valid_accesses'];
   <main class="admin-main">
     <div class="admin-header">
       <div>
-        <h1>Kelola Dashboard</h1>
+        <h1>Manage Dashboard</h1>
         <p class="lead" style="font-size:15px;margin:8px 0 0">Logged in as: <strong><?= e($_SESSION['user_name'] ?? $_SESSION['username'] ?? 'Unknown') ?></strong></p>
       </div>
-      <a class="btn btn-primary" href="admin.php">+ Tambah Baru</a>
+      <a class="btn btn-primary" href="admin.php">+ Add New</a>
     </div>
 
     <?php if (!empty($errors)): ?>
@@ -194,40 +194,42 @@ $accesses = $GLOBALS['valid_accesses'];
     <?php if ($message): ?><div class="success"><?= e($message) ?></div><?php endif; ?>
 
     <section class="panel">
-      <h2 style="margin-top:0;color:var(--ugm-blue)"><?= $edit ? 'Edit Dashboard' : 'Tambah Dashboard' ?></h2>
+      <h2 style="margin-top:0;color:var(--ugm-blue)"><?= $edit ? 'Edit Dashboard' : 'Add Dashboard' ?></h2>
       <form method="post">
         <input type="hidden" name="action" value="save">
         <input type="hidden" name="id" value="<?= e($edit['id'] ?? '') ?>">
         <?= csrf_field() ?>
         <div class="form-grid">
           <div>
-            <label>Nama Dashboard</label>
-            <input name="name" value="<?= e($edit['name'] ?? '') ?>" required>
+            <label>Dashboard Name *</label>
+            <input name="name" value="<?= e($edit['name'] ?? '') ?>" placeholder="e.g., Executive Intelligence Dashboard" required>
           </div>
           <div>
-            <label>Domain</label>
+            <label>Domain *</label>
             <select name="domain" required>
+              <option value="">-- Select Domain --</option>
               <?php foreach ($domains as $domain): ?>
                 <option <?= (($edit['domain'] ?? '') === $domain) ? 'selected' : '' ?>><?= e($domain) ?></option>
               <?php endforeach; ?>
             </select>
           </div>
           <div class="full">
-            <label>Deskripsi</label>
-            <textarea name="description" rows="3" required><?= e($edit['description'] ?? '') ?></textarea>
+            <label>Description *</label>
+            <textarea name="description" rows="3" placeholder="Describe what this dashboard monitors..." required><?= e($edit['description'] ?? '') ?></textarea>
           </div>
           <div>
-            <label>Owner</label>
-            <input name="owner" value="<?= e($edit['owner'] ?? '') ?>" placeholder="Contoh: DTI / BTD">
+            <label>Owner *</label>
+            <input name="owner" value="<?= e($edit['owner'] ?? '') ?>" placeholder="e.g., DTI, Biro Perencanaan" required>
           </div>
           <div>
             <label>Audience</label>
-            <input name="audience" value="<?= e($edit['audience'] ?? '') ?>" placeholder="Contoh: Pimpinan, Fakultas">
+            <input name="audience" value="<?= e($edit['audience'] ?? '') ?>" placeholder="e.g., University Leadership, Faculty">
           </div>
           <div>
             <label>Update Frequency</label>
             <select name="update_frequency">
-              <?php foreach (['Harian','Mingguan','Bulanan','Triwulan','Semesteran'] as $f): ?>
+              <option value="">-- Select Frequency --</option>
+              <?php foreach (['Daily','Weekly','Monthly','Quarterly','Semester'] as $f): ?>
                 <option <?= (($edit['update_frequency'] ?? '') === $f) ? 'selected' : '' ?>><?= e($f) ?></option>
               <?php endforeach; ?>
             </select>
@@ -239,6 +241,7 @@ $accesses = $GLOBALS['valid_accesses'];
           <div>
             <label>Status</label>
             <select name="status">
+              <option value="">-- Select Status --</option>
               <?php foreach ($statuses as $status): ?>
                 <option <?= (($edit['status'] ?? '') === $status) ? 'selected' : '' ?>><?= e($status) ?></option>
               <?php endforeach; ?>
@@ -247,27 +250,28 @@ $accesses = $GLOBALS['valid_accesses'];
           <div>
             <label>Access Level</label>
             <select name="access">
+              <option value="">-- Select Access --</option>
               <?php foreach ($accesses as $access): ?>
                 <option <?= (($edit['access'] ?? '') === $access) ? 'selected' : '' ?>><?= e($access) ?></option>
               <?php endforeach; ?>
             </select>
           </div>
           <div class="full">
-            <label>URL Dashboard</label>
-            <input name="url" value="<?= e($edit['url'] ?? '') ?>" placeholder="https://...">
+            <label>Dashboard URL *</label>
+            <input name="url" value="<?= e($edit['url'] ?? '') ?>" type="url" placeholder="https://example.com/dashboard" required>
           </div>
           <div class="full">
             <label>Tags</label>
-            <input name="tags" value="<?= e($edit['tags'] ?? '') ?>" placeholder="akademik, mahasiswa, layanan">
+            <input name="tags" value="<?= e($edit['tags'] ?? '') ?>" placeholder="e.g., strategic, kpi, executive (comma separated)">
           </div>
         </div>
         <br>
-        <button class="btn btn-primary" type="submit">Simpan Konten</button>
+        <button class="btn btn-primary" type="submit">Save Dashboard</button>
       </form>
     </section>
 
     <section class="panel">
-      <h2 style="margin-top:0;color:var(--ugm-blue)">Daftar Konten Dashboard</h2>
+      <h2 style="margin-top:0;color:var(--ugm-blue)">Dashboard Content List</h2>
       <div class="table-wrap">
         <table>
           <thead>
@@ -278,7 +282,7 @@ $accesses = $GLOBALS['valid_accesses'];
               <th>Status</th>
               <th>Access</th>
               <th>Last Update</th>
-              <th>Aksi</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -293,10 +297,10 @@ $accesses = $GLOBALS['valid_accesses'];
                 <td>
                   <div class="action-inline">
                     <a href="admin.php?edit=<?= e($d['id'] ?? '') ?>">Edit</a>
-                    <form method="post" onsubmit="return confirm('Hapus dashboard ini?')">
+                    <form method="post" onsubmit="return confirm('Delete this dashboard?')">
                       <input type="hidden" name="action" value="delete">
                       <input type="hidden" name="id" value="<?= e($d['id'] ?? '') ?>">
-                      <button class="danger" type="submit">Hapus</button>
+                      <button class="danger" type="submit">Delete</button>
                     </form>
                   </div>
                 </td>
